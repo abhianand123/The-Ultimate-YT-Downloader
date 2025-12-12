@@ -302,7 +302,52 @@ body::after {
     margin: 0 auto;
 }
 
-.platform-card,
+.glow-card {
+    padding: 3px;
+    background-image: linear-gradient(163deg, #ff0000 0%, #8b5cf6 100%);
+    border-radius: 24px;
+    transition: all 0.3s;
+    cursor: pointer;
+    animation: glowPulse 3s ease-in-out infinite;
+    box-shadow: 0px 0px 20px 1px rgba(255, 0, 0, 0.2);
+}
+
+.glow-card-music {
+    background-image: linear-gradient(163deg, #8b5cf6 0%, #ec4899 100%);
+    box-shadow: 0px 0px 20px 1px rgba(139, 92, 246, 0.2);
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        box-shadow: 0px 0px 20px 1px rgba(139, 92, 246, 0.3);
+    }
+
+    50% {
+        box-shadow: 0px 0px 35px 3px rgba(236, 72, 153, 0.4);
+    }
+}
+
+.glow-card-inner {
+    background: var(--bg-card);
+    border-radius: 22px;
+    padding: 40px 30px;
+    transition: all 0.2s;
+    text-align: center;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.glow-card:hover {
+    box-shadow: 0px 0px 40px 3px rgba(139, 92, 246, 0.4);
+    transform: translateY(-5px);
+}
+
+.glow-card:hover .glow-card-inner {
+    transform: scale(0.98);
+}
+
 .mode-card {
     position: relative;
     background: var(--bg-card);
@@ -315,7 +360,6 @@ body::after {
     backdrop-filter: blur(10px);
 }
 
-.platform-card:hover,
 .mode-card:hover {
     background: var(--bg-card-hover);
     transform: translateY(-8px) scale(1.02);
@@ -332,15 +376,6 @@ body::after {
     transition: opacity var(--transition-normal);
     border-radius: 24px;
     pointer-events: none;
-}
-
-.platform-card:hover .card-glow {
-    opacity: 1;
-    background: radial-gradient(circle at center, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
-}
-
-.platform-card[data-platform="music"]:hover .card-glow {
-    background: radial-gradient(circle at center, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
 }
 
 .mode-card:hover .card-glow {
@@ -372,7 +407,7 @@ body::after {
     height: 40px;
 }
 
-.platform-card:hover .card-icon {
+.glow-card:hover .card-icon {
     transform: scale(1.1) rotate(-5deg);
 }
 
@@ -384,6 +419,18 @@ body::after {
     font-size: 48px;
     margin-bottom: 15px;
     display: block;
+}
+
+.glow-card-inner h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.glow-card-inner p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
 }
 
 .card-content h3 {
